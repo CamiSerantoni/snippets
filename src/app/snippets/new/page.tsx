@@ -1,7 +1,7 @@
 export default function SnippetsCreatePage(){
     return (
         <div>
-           create Snippets!
+           Create Snippets!
         </div>
     )
 } 
