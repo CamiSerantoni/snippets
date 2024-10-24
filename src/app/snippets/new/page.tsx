@@ -1,6 +1,29 @@
+import { db } from "@/db";
+import { redirect } from "next/navigation";
+
 export default function SnippetsCreatePage() {
+  async function createSnippet(formData: FormData) {
+    //this need to be aserver action
+    "use server";
+
+    //chec the user's inputs
+    const title = formData.get("title") as string;
+    const code = formData.get("code") as string;
+
+    //insert the snippet into the db
+    const snippet = await db.snippet.create({
+      data: {
+        title,
+        code,
+      },
+    });
+    console.log(snippet);
+    //redirect the user back to the root route
+    redirect("/");
+  }
+
   return (
-    <form action="">
+    <form action={createSnippet}>
       <h3 className="font-bold m-3">Create snippet</h3>
       <div className="flex  flex-col gap-4">
         <div className="flex gap-4">
