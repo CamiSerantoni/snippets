@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import { db } from "@/db";
+import SnippetEditForm from "@/components/snippet-edit-form";
 
 export default async function Home() {
   const snippets = await db.snippet.findMany();
